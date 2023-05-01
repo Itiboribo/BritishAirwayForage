@@ -13,7 +13,7 @@ excel = openpyxl.Workbook()
 sheet = excel.active
 sheet.title = 'British Airways reviews'
 #set the Review details as colum names
-sheet.append(['CustomerName', 'ReviewdatePublished', 'CustomerCountry' ,'TypeofTraveller', 
+sheet.append(['CustomerName', 'ReviewdatePublished', 'CustomerCountry' ,'CustomerWriteUp', 'TypeofTraveller', 
               'Aircraft', 'SeatType', 'Route', 'DateFlown', 'SeatComfort', 'CabinStaffService', 
               'FoodBeverages', 'InflightEntertainment', 'GroundService', 'ValueForMoney', 'WifiConnectivity','Recommended' ])
 
@@ -35,6 +35,7 @@ try:
 
           ##Collect Avaliabe Data From Each Page
           for index, review_box1 in enumerate(review_boxes):
+               #CustomerWriteUp = review_box1.find('div', class_= 'text_content', itemprop='reviewBody')
                customer_name_row = review_box1.find('span', itemprop='name')
                CustomerName = customer_name_row.text.strip()
                ReviewdatePublished = review_box1.find('time', itemprop="datePublished").text
